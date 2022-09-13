@@ -12,11 +12,16 @@ function NewForm() {
   const [username, setname] = useState([]);
   const [email, setemail] = useState([]);
   const [password, setpassword] = useState("");
+  const userName =JSON.parse(localStorage.getItem("username"));
+  const userEmail = JSON.parse(localStorage.getItem("email"));
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      
-      if (username === "") {
+      if (userName.includes(username)) {
+        alert("UserName is already registered");
+      } else if(userEmail.includes(email)) {
+        alert("Entered Email ID is already registered");
+      } else if(username === "") {
         alert("Name Is Required");
       } else if (email === "") {
         alert("Email Is Required");
